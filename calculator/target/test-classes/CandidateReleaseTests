@@ -1,0 +1,122 @@
+      DESCRIPTION         |      TYPE     |   EXPECTED   |    ACTUAL    |         RESOLUTION         |                     
+--------------------------|---------------|--------------|--------------|----------------------------|                      
+1 1 +                     |               |              |              |                            |
+The first test is to asses|               |              |              |                            |
+the basic functionality of| SPECIFICATION |     2.0      |      2.0     |            N/A             |          
+the calculator            |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|
+11 2 3 + *                |               |              |              |                            |
+Testing the capability of |               |              |              |                            |
+calculating products      | SPECIFICATION |     55.0     |     55.0     |            N/A             |
+                          |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|
+36 6 /                    |               |              |              |                            |
+Testing the capability of | SPECIFICATION |     6.0      |      6.0     |            N/A             |
+calculating quotients     |               |              |              |                            |
+                          |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|
+10 10 -                   |               |              |              |                            |
+Testing the capability of | SPECIFICATION |       0      |      0       |            N/A             |
+calculating differences   |               |              |              |                            |              
+                          |               |              |              |                            |              
+--------------------------|---------------|--------------|--------------|----------------------------|
+9999999999 9999999999 *   |               |              |              |                            |              
+Testing the ability to    | STRESS TEST   |    1.0E20    |    1.0E20    |            N/A             |
+handle large outputs      |               |              |              |                            |
+                          |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|
+4 12 * 2 * 3 5 / +        |               |              |              |                            |
+Testing the speed at which|  PERFORMANCE  |              |              |                            |
+the calculator computes   |     TEST      |  <0.0000001  |  <0.0000001  |            N/A             |
+                          |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|                      
+                          |               |              |              |Added the missing javadoc   |
+Testing that the code     |  COMPILANCE   |              |              |comments to all the missing |
+passes all the google     |     TEST      | No ChekStyle |  Multiple    |classes and methods. Also   |               
+CheckMarks                |               | warnings     |  Warnings    |adjusted various indentation|
+                          |               |              |              |levels                      |
+--------------------------|---------------|--------------|--------------|----------------------------|
+100 + 1                   |               |              |              |                            |
+Testing the capability of |               |              |              |                            |
+calculating products      | SPECIFICATION |     101.0    |     101.0    |            N/A             |          
+in infix mode             |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|
+11 * 3 + 15               |               |              |              |                            |
+Testing the capability of |               |              |              |                            |
+calculating products      | SPECIFICATION |     48.0     |     48.0     |            N/A             |
+in infix mode             |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|
+47 / 6                    |               |              |              |                            |
+Testing the capability of | SPECIFICATION |   7.8333335  |   7.8333335  |            N/A             |
+calculating quotients     |               |              |              |                            |
+in infix mode             |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|
+1 / 0                     |               |              |              |In the reverse polish stack,|
+Testing the ability to    |               | 'Math Error: |  Calculator  |when the first element is   |
+display a useful error    |  STRESS TEST  |cannot divide |   crashed    |popped after reading a      |           
+message when dividing by 0|               |   by 0!'     |              |divide operator is 0, an    |
+                          |               |              |              |ArithmeticException is      |
+                          |               |              |              |thrown.                     |
+--------------------------|---------------|--------------|--------------|----------------------------|
+1 1 + + + +               |               |              |              |                            |
+Testing the ability to    |               |'Illegal      |              |CalcModel now catches an    |
+read and identify an      |               | expression:  |  Calculator  |EmptyStackException and     |
+erroneous expression with |               | check number |   crashed    |returns the correct error   |
+too many operators and    |  STRESS TEST  | of operators'|              |message                     |
+display an error message  |               |              |              |                            |
+                          |               |              |              |                            |
+                          |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|              
+ 1 1 1 1 1 +              |               |              |              |                            |
+Testing the ability to    |               |'Illegal      |              |CalcModel now catches an    |
+read and identify an      |               | expression:  |  Calculator  |ArrayStoreException and     |
+erroneous expression with |               | check number |   crashed    |returns the correct error   |
+too many operands and     |  STRESS TEST  | of operands' |              |message                     |
+display an error message  |               |              |              |                            |
+                          |               |              |              |                            |
+                          |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|              
+ 1    1 +                 |               |              |              |                            |
+Testing the ability to    |               |              |              |                            |
+read and identify an      |               |              |              |                            |
+erroneous expression with |               |              |              |                            |
+too many spaces and       |  STRESS TEST  |      2.0     |      2.0     |         N/A                |
+calculate the correct     |               |              |              |                            |
+expression regardless     |               |              |              |                            |
+                          |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|              
+I asked a friends who     |               |              |The look was  |Buttons from cyan to dark   |
+studies humanities to use |               |              |too bland and |blue.                       |
+my calculator and give    |               |              |the cyan      |Also changed the font type  |
+adequate feedback         |  USABILITY    |     N/A      |were hard to  |of the field to sans-serif  |
+calculate the correct     |   TESTING     |              |work with     |                            |
+expression regardless     |               |              |              |                            |
+                          |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|              
+                          |               |              |              |In the reverse polish stack,|
+Testing the ability to    |               | 'Illegal     |  Calculator  |if the expression is empty, |
+display a useful error    |  STRESS TEST  |  expression: |   crashed    |an IllegalArgumentException |           
+message when calculating  |               |  please input|              |is thrown                   |
+an empty input            |               |  something!' |              |                            |
+                          |               |              |              |                            |
+--------------------------|---------------|--------------|--------------|----------------------------|
+
+              
+              
+              
+              
+              
+              
+              
+              
+              
+
+              
+              
+              
+              
+              
+              
+              
+              
+                         

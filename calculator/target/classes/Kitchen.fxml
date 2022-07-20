@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1200.0" prefWidth="1600.0" stylesheets="@Kitchen.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.cs2810.KitchenController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="566.0" minHeight="10.0" prefHeight="561.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="566.0" minHeight="10.0" prefHeight="564.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane">
+         <children>
+            <Button fx:id="order1" layoutX="49.0" layoutY="64.0" mnemonicParsing="false" onAction="#completeOrder" prefHeight="476.0" prefWidth="302.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane" GridPane.columnIndex="1">
+         <children>
+            <Button fx:id="order2" layoutX="49.0" layoutY="65.0" mnemonicParsing="false" onAction="#completeOrder" prefHeight="476.0" prefWidth="302.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane" GridPane.columnIndex="2">
+         <children>
+            <Button fx:id="order3" layoutX="67.0" layoutY="63.0" mnemonicParsing="false" onAction="#completeOrder" prefHeight="476.0" prefWidth="302.0" />
+         </children>
+      </Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane" GridPane.columnIndex="3">
+         <children>
+            <Button fx:id="order4" layoutX="49.0" layoutY="71.0" mnemonicParsing="false" onAction="#completeOrder" prefHeight="476.0" prefWidth="302.0" />
+         </children></Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane" GridPane.rowIndex="1">
+         <children>
+            <Button fx:id="order5" layoutX="49.0" layoutY="74.0" mnemonicParsing="false" onAction="#completeOrder" prefHeight="476.0" prefWidth="302.0" />
+         </children></Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <children>
+            <Button fx:id="order21" layoutX="49.0" layoutY="74.0" mnemonicParsing="false" onAction="#completeOrder" prefHeight="476.0" prefWidth="302.0" />
+            <Button fx:id="order6" layoutX="59.0" layoutY="75.0" mnemonicParsing="false" onAction="#completeOrder" prefHeight="476.0" prefWidth="302.0" />
+         </children></Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane" GridPane.columnIndex="2" GridPane.rowIndex="1">
+         <children>
+            <Button fx:id="order7" layoutX="49.0" layoutY="74.0" mnemonicParsing="false" onAction="#completeOrder" prefHeight="476.0" prefWidth="302.0" />
+         </children></Pane>
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="pane" GridPane.columnIndex="3" GridPane.rowIndex="1">
+         <children>
+            <Button fx:id="order8" layoutX="49.0" layoutY="74.0" mnemonicParsing="false" onAction="#completeOrder" prefHeight="476.0" prefWidth="302.0" />
+         </children></Pane>
+      <Button fx:id="newOrder" alignment="CENTER" mnemonicParsing="false" onAction="#newOrderPressed" prefHeight="55.0" prefWidth="172.0" styleClass="order" text="New Order" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+   </children>
+</GridPane>
