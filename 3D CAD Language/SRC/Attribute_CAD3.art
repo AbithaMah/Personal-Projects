@@ -1,0 +1,88 @@
+
+support {
+  ITerms iTerms = new ITermsLowLevelAPI();
+  Value variables = new __map();
+}
+
+statements ::= statement 
+| statement statements  
+
+
+
+statement ::=
+  ID '<-' expression ';' { variables.__put(ID1.v, expression1.v); }
+| 'if' condition ':' statement< 'else' ':' statement< 
+  { if (((__bool) condition1.v).value()) 
+      artEvaluate(statement.statement1, statement1); 
+    else
+      artEvaluate(statement.statement2, statement2);  
+   }
+
+
+| 'while' condition< statement< 
+  { artEvaluate(statement.condition1, condition1); 
+    while (((__bool) condition1.v).value()) { 
+      artEvaluate(statement.statement1, statement1); 
+      artEvaluate(statement.condition1, condition1); 
+    } 
+  }
+
+
+| 'for' condition< '|' statement< '|' statements< 'end'
+  { artEvaluate(statement.condition1, condition1);
+  while (((__bool) condition1.v).value()) { 
+    artEvaluate(statement.statement1, statement1); 
+    artEvaluate(statement.statements1, statements1); 
+   
+    
+    artEvaluate(statement.condition1, condition1); 
+    }
+  }
+
+
+
+| 'display' '('  ')' ';' {iTerms.valueUserPlugin.user(new __int32(4,0));}
+
+| expression '->''translate' '(' expression ','  expression ')' ';' {iTerms.valueUserPlugin.user(new __int32(5,0), expression1.v, expression2.v, expression3.v);}
+
+| expression '->' 'scale' '(' expression ')' ';' {iTerms.valueUserPlugin.user(new __int32(7,0), expression1.v, expression2.v);}
+
+| expression '->' 'duplicate' '('  ')' ';' {iTerms.valueUserPlugin.user(new __int32(8,0), expression1.v);}
+
+| expression '->' 'changeColour' '(' expression ','  expression ','  expression ',' expression ')' ';' {iTerms.valueUserPlugin.user(new __int32(6,0), expression1.v, expression2.v, expression3.v, expression4.v, expression5.v);}
+
+
+
+condition<v:Value> ::=
+  expression { condition.v = expression1.v; }
+| condition '>' expression { condition.v = condition1.v.__gt(expression1.v); }
+| condition '<' expression { condition.v = condition1.v.__lt(expression1.v); }
+| condition '>=' expression { condition.v = condition1.v.__ge(expression1.v); }
+| condition '<=' expression { condition.v = condition1.v.__le(expression1.v); }
+| condition '!=' expression { condition.v = condition1.v.__ne(expression1.v); }
+
+expression<v:Value> ::=
+  operand { expression.v = operand1.v; }
+| 'sphere' '(' expression ')' { expression.v = iTerms.valueUserPlugin.user(new __int32(1,0), expression1.v);}
+| 'cube' '('  expression ')' { expression.v = iTerms.valueUserPlugin.user(new __int32(2,0), expression1.v, expression1.v, expression1.v);}
+| 'cuboid' '(' expression ',' expression ',' expression ')' { expression.v = iTerms.valueUserPlugin.user(new __int32(2,0), expression1.v, expression2.v, expression3.v);}
+| 'cylinder' '(' expression ',' expression ')' { expression.v = iTerms.valueUserPlugin.user(new __int32(3,0), expression1.v, expression2.v);}
+|  expression '-' operand { expression.v = expression1.v.__sub(operand1.v); }
+|  expression '+' operand { expression.v = expression1.v.__add(operand1.v); }
+|  expression '*' operand { expression.v = expression1.v.__mul(operand1.v); }
+
+
+
+operand<v:Value> ::=
+  ID {operand.v = variables.__get(ID1.v); }
+| INTEGER {operand.v = INTEGER1.v; }
+| '(' expression ')' {operand.v = expression1.v; }
+
+
+(* lexical items below this line *)
+ID <leftExtent:int rightExtent:int lexeme:String v:__string> ::= 
+  &ID {ID.lexeme = artLexeme(ID.leftExtent, ID.rightExtent); ID.v = new __string(artLexemeAsID(ID.leftExtent, ID.rightExtent)); }  
+
+INTEGER <leftExtent:int rightExtent:int lexeme:String v:__int32> ::= 
+  &INTEGER {INTEGER.lexeme = artLexeme(INTEGER.leftExtent, INTEGER.rightExtent); INTEGER.v = new __int32(artLexemeAsInteger(INTEGER.leftExtent, INTEGER.rightExtent), 0); }  
+

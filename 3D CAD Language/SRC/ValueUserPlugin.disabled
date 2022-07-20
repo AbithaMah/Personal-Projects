@@ -1,0 +1,289 @@
+import uk.ac.rhul.cs.csle.art.util.ARTException;
+import uk.ac.rhul.cs.csle.art.value.*;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.application.ConditionalFeature;
+import javafx.application.Platform;
+import javafx.scene.Group;
+import javafx.scene.PerspectiveCamera;
+import javafx.scene.Scene;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.PhongMaterial;
+import javafx.scene.shape.Box;
+import javafx.scene.shape.Cylinder;
+import javafx.scene.shape.Sphere;
+import javafx.scene.shape.Shape;
+import javafx.scene.transform.Rotate;
+import javafx.stage.Stage;
+import javafx.scene.shape.Shape3D;
+import java.util.HashMap;
+
+
+public class ValueUserPlugin implements ValueUserPluginInterface {
+
+
+  int nextFreeHandle = 1;
+  HashMap<Shape3D, Integer> objectToHandle  = new HashMap<Shape3D, Integer>();
+  HashMap<Integer, Shape3D> handleToObject  = new HashMap<Integer, Shape3D>();
+
+
+
+
+  public void addMap(Shape3D shape) {
+
+    objectToHandle.put(shape, nextFreeHandle);
+    handleToObject.put(nextFreeHandle, shape);
+    nextFreeHandle++;
+    
+  }
+
+
+  @Override
+  public String name() {
+      return "£CAD prototype";
+  }
+
+  @Override
+  public Value user(Value... args) throws ARTException {
+
+    final int windowX = 800;
+    final int windowY = 600;  
+
+
+    Stage stage = new Stage();
+
+    Group root = new Group();  
+    root.setRotationAxis(Rotate.Y_AXIS);
+    root.setRotate(50);
+
+
+
+
+
+    switch((int) args[0].value()){
+
+      case 1: // create a sphere object
+
+        Sphere sphere = new Sphere();  
+        sphere.setRadius((int) args[1].value());   
+        sphere.setTranslateX(200); 
+        sphere.setTranslateY(150); 
+        addMap(sphere);
+
+        return new __int32(objectToHandle.get(sphere));
+
+
+      case 2: // create a cuboid object   
+
+        Box box = new Box(); 
+        box.setWidth((int) args[1].value());
+        box.setHeight((int) args[2].value()); 
+        box.setDepth((int) args[3].value()); 
+        box.setTranslateX(200); 
+        box.setTranslateY(150); 
+        addMap(box);
+
+        return new __done();
+
+      case 3: // create a cylinder object  
+        Cylinder cylinder = new Cylinder();
+        cylinder.setRadius((int) args[1].value());
+        cylinder.setHeight((int) args[2].value());
+        cylinder.setTranslateX(200); 
+        cylinder.setTranslateY(150); 
+
+        addMap(cylinder);
+        return new __done();
+
+
+
+
+
+      case 4: // display the current objects  
+
+      stage.setTitle(String.valueOf("3CAD example"));
+
+      // Create camera and move it away from the origin
+      PerspectiveCamera camera = new PerspectiveCamera(false);
+      camera.setTranslateX(-0.25 * windowX);
+      camera.setTranslateY(-1 * windowY);
+      
+  
+      for(int i = 1; i <= nextFreeHandle - 1; i++){
+        
+        root.getChildren().addAll(handleToObject.get(i));
+        
+        }
+  
+        Scene scene = new Scene(root, 1000, 1000, true); 
+        scene.setCamera(camera); // Put the camera into the s  cene
+   
+        stage.setScene(scene); 
+        stage.show(); 
+
+        nextFreeHandle = 1;
+        objectToHandle  = new HashMap<Shape3D, Integer>();
+        handleToObject  = new HashMap<Integer, Shape3D>();
+
+
+
+        return new __done();
+
+      case 5: // Translate a shape 
+
+        handleToObject.get((int) args[1].value()).setTranslateX((int) args[2].value());
+        handleToObject.get((int) args[1].value()).setTranslateY((int) args[3].value());
+        
+
+        return new __done();  
+
+            
+        
+      
+  
+      case 6: // Change the colour of a shape
+
+        final PhongMaterial material = new PhongMaterial();
+
+
+        Color color = Color.color((int) args[2].value(), (int) args[3].value(),(int) args[4].value(), (int) args[5].value());
+
+
+
+        material.setDiffuseColor(color);
+        material.setSpecularColor(color);
+
+        
+        handleToObject.get(1).setMaterial(material);
+
+
+        return new __done(); 
+
+
+        
+         
+         
+        case 7: // Scale an objects dimensions
+
+        Object newShape = (Object) handleToObject.get((int) args[1].value());
+
+
+        if(newShape instanceof Sphere){     
+
+        Sphere tempShape = (Sphere) newShape;
+
+        double oldRadius = tempShape.getRadius();
+
+        tempShape.setRadius(((int) args[2].value())*oldRadius);
+
+          }
+  
+        if(newShape instanceof Box){  
+
+        Box tempShape = (Box) newShape;
+        double oldHeight = tempShape.getHeight();
+        double oldWidth = tempShape.getWidth();
+        double oldDepth = tempShape.getDepth();
+
+        tempShape.setHeight(((int) args[2].value())*oldHeight);
+        tempShape.setWidth(((int) args[2].value())*oldWidth);
+        tempShape.setDepth(((int) args[2].value())*oldDepth);
+
+          }
+  
+        if(newShape instanceof Cylinder){
+            
+        Cylinder tempShape = (Cylinder) newShape;
+        double oldHeight = tempShape.getHeight();
+        double oldRadius = tempShape.getRadius();
+
+        tempShape.setHeight(((int) args[2].value())*oldHeight);
+        tempShape.setRadius(((int) args[2].value())*oldRadius);
+
+
+          }
+        
+        return new __done();  
+
+          
+        case 8: //duplicate and object
+
+        newShape = (Object) handleToObject.get((int) args[1].value());
+
+          
+        if(newShape instanceof Sphere){     
+
+          Sphere tempShape = (Sphere) newShape;
+
+          double radius = tempShape.getRadius();
+
+
+          addMap(new Sphere(radius));
+
+          Object translateShape = (Object) handleToObject.get(nextFreeHandle - 1);
+
+
+          }
+
+          if(newShape instanceof Box){     
+
+            Box tempShape = (Box) newShape;
+  
+            double side = tempShape.getHeight();
+            double side2 = tempShape.getWidth();
+            double side3 = tempShape.getDepth();
+  
+            addMap(new Box(side, side2, side3));
+  
+            Object translateShape = (Object) handleToObject.get(nextFreeHandle - 1);
+  
+  
+            }
+
+          if(newShape instanceof Cylinder){ 
+              
+
+
+
+
+            Cylinder tempShape = (Cylinder) newShape;
+
+            double side = tempShape.getHeight();
+            double radius = tempShape.getRadius();
+    
+            double radiusCylinder = tempShape.getRadius();
+    
+    
+            addMap(new Cylinder(radiusCylinder, side));
+    
+            Object translateShape = (Object) handleToObject.get(nextFreeHandle - 1);
+    
+    
+          }
+          return new __done();
+
+          
+
+
+        
+
+
+
+              
+          
+  }
+
+
+
+
+ 
+
+
+  return new __done();
+}
+
+
+}

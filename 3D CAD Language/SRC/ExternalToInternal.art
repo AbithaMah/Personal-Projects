@@ -1,0 +1,47 @@
+
+statement ::= seq^^ | assign^^ | if^^ | while^^ | display^^ | translate^^ | scale^^ | duplicate^^ |changeColour^^
+ 
+seq ::= statement statement
+assign ::= ID '<-'^ expression ';'^
+if ::= 'if'^ predicate statement 'else'^ statement
+while ::= 'while'^ predicate statement 
+display ::= 'display'^ ';'^
+translate ::= deref '->'^ 'translate'^ '('^ expression ','^ expression ')'^ ';'^
+scale ::= deref '->'^ 'scale'^ '('^ expression ')'^ ';'^
+duplicate ::= deref '->'^ 'duplicate'^ '('^ ')'^ ';'^
+
+changeColour ::= deref '->'^ 'changeColour'^ '('^ expression ','^ expression ','^ expression ','^ expression ')'^ ';'^
+
+
+
+predicate ::= expression^^ | gt^^ | ne^^ | lt^^ | ge^^ | le^^
+gt ::= predicate '>'^ expression
+ne ::= predicate '!='^ expression
+lt ::= predicate '<'^ expression
+ge ::= predicate '>='^ expression
+le ::= predicate '<='^ expression
+
+expression ::= operand^^ | sphere^^ | cube^^ | cylinder^^ |cuboid^^ | add^^ | sub^^ | mul^^
+sphere ::= 'sphere'^ '('^ operand ')'^  
+cube ::= 'cube'^ '('^ operand ')'^  
+cylinder ::= 'cylinder'^ '('^ operand ','^ operand ')'^ 
+cuboid ::= 'cuboid'^ '('^ operand ','^ operand ','^ operand ')'^ 
+add ::= expression '+'^ operand
+sub ::= expression '-'^ operand
+mul ::= expression '*'^ operand
+
+
+operand ::= deref^^ | INTEGER^^ | '('^ expression^^ ')'^ 
+deref ::= ID
+
+
+
+(* lexical items below this line *)
+ID <leftExtent:int rightExtent:int lexeme:String v:ARTValueString> ::= 
+  &ID^^ {ID.lexeme = artLexeme(ID.leftExtent, ID.rightExtent); 
+  ID.v = new ARTValueString(artLexemeAsID(ID.leftExtent, ID.rightExtent)); }  
+
+INTEGER <leftExtent:int rightExtent:int lexeme:String v:ARTValueInteger32> ::= 
+  &INTEGER^^ { INTEGER.lexeme = artLexeme(INTEGER.leftExtent, INTEGER.rightExtent); 
+  INTEGER.v = new ARTValueInteger32(artLexemeAsInteger(INTEGER.leftExtent, INTEGER.rightExtent)); }  
+

@@ -1,0 +1,83 @@
+(* relation '->' *)
+(* constructor seq *)
+-sequenceDone  --- seq(__done, _C), _sig -> _C, _sig
+-sequence _C1, _sig -> _C1P, _sigP --- seq(_C1, _C2), _sig -> seq(_C1P, _C2), _sigP
+(* constructor ge *)
+-ge _n1 |> _  _n2 |> _ --- ge(_n1, _n2), _sig -> __ge(_n1, _n2), _sig
+-geRight _n |> _  _E2, _sig -> _I2, _sigP --- ge(_n, _E2), _sig -> ge(_n, _I2), _sigP
+-geLeft _E1, _sig -> _I1, _sigP --- ge(_E1, _E2), _sig -> ge(_I1, _E2), _sigP
+(* constructor ne *)
+-ne _n1 |> _  _n2 |> _ --- ne(_n1, _n2), _sig -> __ne(_n1, _n2), _sig
+-neRight _n |> _  _E2, _sig -> _I2, _sigP --- ne(_n, _E2), _sig -> ne(_n, _I2), _sigP
+-neLeft _E1, _sig -> _I1, _sigP --- ne(_E1, _E2), _sig -> ne(_I1, _E2), _sigP
+(* constructor cylinder *)
+-cylinder _n1 |> _  _n2 |> _ --- cylinder(_n1, _n2), _sig -> __user(3, _n1, _n2), _sig
+-cylinderRight _n1 |> _  _P2, _sig -> _P2E, _sigP --- cylinder(_n1, _P2), _sig -> cylinder(_n1, _P2E), _sigP
+-cylinderLeft _P1, _P2, _sig -> _P1E, _P2, _sigP --- cylinder(_P1, _P2), _sig -> cylinder(_P1E, _P2), _sigP
+(* constructor sub *)
+-sub _n1 |> _  _n2 |> _ --- sub(_n1, _n2), _sig -> __sub(_n1, _n2), _sig
+-subRight _n |> _  _E2, _sig -> _I2, _sigP --- sub(_n, _E2), _sig -> sub(_n, _I2), _sigP
+-sub _n1 |> _  _n2 |> _ --- sub(_n1, _n2), _sig -> __sub(_n1, _n2), _sig
+-subRight _n |> _  _E2, _sig -> _I2, _sigP --- sub(_n, _E2), _sig -> sub(_n, _I2), _sigP
+-subLeft _E1, _sig -> _I1, _sigP --- sub(_E1, _E2), _sig -> sub(_I1, _E2), _sigP
+(* constructor if *)
+-ifTrue  --- if(True, _C1, _C2), _sig -> _C1, _sig
+-ifFalse  --- if(False, _C1, _C2), _sig -> _C2, _sig
+-ifResolve _E, _sig -> _EP, _sigP --- if(_E, _C1, _C2), _sig -> if(_EP, _C1, _C2), _sigP
+(* constructor display *)
+-display  --- display, _sig -> __user(4), _sig
+(* constructor add *)
+-add _n1 |> _  _n2 |> _ --- add(_n1, _n2), _sig -> __add(_n1, _n2), _sig
+-addRight _n |> _  _E2, _sig -> _I2, _sigP --- add(_n, _E2), _sig -> add(_n, _I2), _sigP
+-addLeft _E1, _sig -> _I1, _sigP --- add(_E1, _E2), _sig -> add(_I1, _E2), _sigP
+(* constructor translate *)
+-translate _n1 |> _  _n2 |> _  _n3 |> _ --- translate(_n1, _n2, _n3), _sig -> __user(5, _n1, _n2, _n3), _sig
+-translateRight _n1 |> _  _n2 |> _  _P3, _sig -> _P3E, _sigP --- translate(_n1, _n2, _P3), _sig -> translate(_n1, _n2, _P3E), _sigP
+-translateMiddle _n1 |> _  _n2 |> _  _P3, _sig -> _P3E, _sigP --- translate(_n1, _P3, _n2), _sig -> translate(_n1, _P3E, _n2), _sigP
+-translateLeft _n1 |> _  _n2 |> _  _P1, _sig -> _P1E, _sigP --- translate(_P1, _n1, _n2), _sig -> translate(_P1E, _n1, _n2), _sigP
+-translateLeftRight _n1 |> _  _P1, _P2, _sig -> _P1E, _P2, _sigP --- translate(_P1, _P2, _n1), _sig -> translate(_P1E, _P2, _n1), _sigP
+(* constructor div *)
+-div _n1 |> _  _n2 |> _ --- div(_n1, _n2), _sig -> __div(_n1, _n2), _sig
+-divRight _n |> _  _E2, _sig -> _I2, _sigP --- div(_n, _E2), _sig -> div(_n, _I2), _sigP
+-divLeft _E1, _sig -> _I1, _sigP --- div(_E1, _E2), _sig -> div(_I1, _E2), _sigP
+(* constructor while *)
+-while  --- while(_E, _C), _sig -> if(_E, seq(_C, while(_E, _C)), __done), _sig
+(* constructor assign *)
+-assign _n |> _ --- assign(_X, _n), _sig -> __done, __put(_sig, _X, _n)
+-assignResolve _E, _sig -> _I, _sigP --- assign(_X, _E), _sig -> assign(_X, _I), _sigP
+(* constructor mul *)
+-mul _n1 |> _  _n2 |> _ --- mul(_n1, _n2), _sig -> __mul(_n1, _n2), _sig
+-mulRight _n |> _  _E2, _sig -> _I2, _sigP --- mul(_n, _E2), _sig -> mul(_n, _I2), _sigP
+-mulLeft _E1, _sig -> _I1, _sigP --- mul(_E1, _E2), _sig -> mul(_I1, _E2), _sigP
+(* constructor changeColour *)
+-changeColour _n1 |> _  _n2 |> _  _n3 |> _  _n4 |> _  _n5 |> _ --- changeColour(_n1, _n2, _n3, _n4, _n5), _sig -> __user(6, _n1, _n2, _n3, _n4, _n5), _sig
+-changeColourEvaluate _n2 |> _  _n3 |> _  _n4 |> _  _n5 |> _  _P1, _sig -> _P1E, _sigP --- changeColour(_P1, _n2, _n3, _n4, _n5), _sig -> changeColour(_P1E, _n2, _n3, _n4, _n5), _sig
+(* constructor sphere *)
+-sphere _P1 |> _ --- sphere(_P1), _sig -> __user(1, _P1), _sig
+-sphereEvaluate _P1, _sig -> _P1E, _sigP --- sphere(_P1), _sig -> sphere(_P1E), _sigP
+(* constructor scale *)
+-scale _n1 |> _  _n2 |> _ --- scale(_n1, _n2), _sig -> __user(7, _n1, _n2), _sig
+-scaleLeft _n2 |> _  _P1, _sig -> _P1E, _sig --- scale(_P1, _n2), _sig -> scale(_P1E, _n2), _sig
+-scaleLeftRight _n2 |> _  _P1, _sig -> _P1E, _sig --- scale(_n2, _P1), _sig -> scale(_n2, _P1E), _sig
+-scaleRight _P1, _sig -> _P1E, _sig --- scale(_P1, _P2), _sig -> scale(_P1E, _P2), _sig
+(* constructor deref *)
+-variable __get(_sig, _R) |> _Z --- deref(_R), _sig -> _Z, _sig
+-variable __get(_sig, _R) |> _Z --- deref(_R), _sig -> _Z, _sig
+(* constructor gt *)
+-gt _n1 |> _  _n2 |> _ --- gt(_n1, _n2), _sig -> __gt(_n1, _n2), _sig
+-gtRight _n |> _  _E2, _sig -> _I2, _sigP --- gt(_n, _E2), _sig -> gt(_n, _I2), _sigP
+-gtLeft _E1, _sig -> _I1, _sigP --- gt(_E1, _E2), _sig -> gt(_I1, _E2), _sigP
+(* constructor cube *)
+-cube  --- cube(_P1), _sig -> __user(2, _P1, _P1, _P1), _sig
+-cubeEvaluate _P1, _sig -> _P1E, _sigP --- cube(_P1), _sig -> cube(_P1E), _sigP
+(* constructor duplicate *)
+-duplicate _n1 |> _ --- duplicate(_n1), _sig -> __user(8, _n1), _sig
+-duplicateEvaluate _P1, _sig -> _P1E, _sig --- duplicate(_P1), _sig -> duplicate(_P1E), _sig
+(* constructor cuboid *)
+-cuboid  --- cuboid(_n1, _n2, _n3), _sig -> __user(2, _n1, _n2, _n3), _sig
+-cuboidLeft _P1, _P2, _P3, _sig -> _P1E, _P2, P3, _sigP --- cuboid(_P1, _P2, _P3), _sig -> cuboid(_P1E, _P2, _P3), _sigP
+-cuboidMiddle _n1 |> _  _P2, _P3, _sig -> _P2E, _P3, _sigP --- cuboid(_n1, _P2, _P3), _sig -> cuboid(_n1, _P2E, _P3), _sigP
+-cuboidRight _n1 |> _  _n2 |> _  _P3, _sig -> _P3E, _sigP --- cuboid(_n1, _n2, _P3), _sig -> cuboid(_n1, _n2, _P3E), _sigP
+
+(*-----------------------*)
+

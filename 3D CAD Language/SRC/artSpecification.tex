@@ -1,0 +1,366 @@
+\documentclass[10pt,leqno,fleqn]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathabx}
+\usepackage{xcolor}
+\usepackage[a4paper, total={18cm, 27cm}]{geometry}
+\parindent 0pt
+\newcommand{\artVariable}[1]{\mbox{\color{purple}\em #1\/}}
+\newcommand{\artConstructor}[1]{\mbox{\sf #1}}
+\newcommand{\artCaseSensitiveLiteral}[1]{\mbox{\color{blue}\tt #1}}
+\newcommand{\artCaseInsensitiveLiteral}[1]{\mbox{\tt #1}}
+\newcommand{\artCharacterLiteral}[1]{\mbox{\tt #1}}
+\newcommand{\artSpecial}[1]{\mbox{\color{orange}\sf\em #1}}
+\newcommand{\artCatenation}{\ \ }
+\newcommand{\artType}[1]{: #1}
+\begin{document}
+\begin{equation}
+\tag*{[\artConstructor{\sf sequenceDone}]}
+\begin{split}\langle\, \artConstructor{\sf seq}(\artSpecial{done}\ \artVariable{C}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{C}, \artVariable{$\sigma$}\,\rangle 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf sequence}]}
+\begin{split}\frac{\langle\, \artVariable{C$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{C$_{1}$\/$^\prime$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf seq}(\artVariable{C$_{1}$}\ \artVariable{C$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf seq}(\artVariable{C$_{1}$\/$^\prime$}\ \artVariable{C$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf ge}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{real64}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{real64}(\_) }{\langle\, \artConstructor{\sf ge}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{ge}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf geRight}]}
+\begin{split}\frac{ \artVariable{n}\triangleright \artSpecial{real64}(\_) \quad \langle\, \artVariable{E$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{2}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf ge}(\artVariable{n}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf ge}(\artVariable{n}\ \artVariable{I$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf geLeft}]}
+\begin{split}\frac{\langle\, \artVariable{E$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{1}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf ge}(\artVariable{E$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf ge}(\artVariable{I$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf ne}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf ne}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{ne}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf neRight}]}
+\begin{split}\frac{ \artVariable{n}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{E$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{2}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf ne}(\artVariable{n}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf ne}(\artVariable{n}\ \artVariable{I$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf neLeft}]}
+\begin{split}\frac{\langle\, \artVariable{E$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{1}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf ne}(\artVariable{E$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf ne}(\artVariable{I$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf cylinder}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf cylinder}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{user}(\artSpecial{int32}(3)\ \artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf cylinderRight}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{P$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P2E}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf cylinder}(\artVariable{n$_{1}$}\ \artVariable{P$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf cylinder}(\artVariable{n$_{1}$}\ \artVariable{P2E}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf cylinderLeft}]}
+\begin{split}\frac{\langle\, \artVariable{P$_{1}$}, \artVariable{P$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{P$_{2}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf cylinder}(\artVariable{P$_{1}$}\ \artVariable{P$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf cylinder}(\artVariable{P1E}\ \artVariable{P$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf sub}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf sub}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{sub}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf subRight}]}
+\begin{split}\frac{ \artVariable{n}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{E$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{2}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf sub}(\artVariable{n}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf sub}(\artVariable{n}\ \artVariable{I$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf sub}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf sub}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{sub}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf subRight}]}
+\begin{split}\frac{ \artVariable{n}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{E$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{2}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf sub}(\artVariable{n}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf sub}(\artVariable{n}\ \artVariable{I$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf subLeft}]}
+\begin{split}\frac{\langle\, \artVariable{E$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{1}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf sub}(\artVariable{E$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf sub}(\artVariable{I$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf ifTrue}]}
+\begin{split}\langle\, \artConstructor{\sf if}(\artSpecial{bool}(\artConstructor{\sf True})\ \artVariable{C$_{1}$}\ \artVariable{C$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{C$_{1}$}, \artVariable{$\sigma$}\,\rangle 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf ifFalse}]}
+\begin{split}\langle\, \artConstructor{\sf if}(\artSpecial{bool}(\artConstructor{\sf False})\ \artVariable{C$_{1}$}\ \artVariable{C$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{C$_{2}$}, \artVariable{$\sigma$}\,\rangle 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf ifResolve}]}
+\begin{split}\frac{\langle\, \artVariable{E}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{E\/$^\prime$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf if}(\artVariable{E}\ \artVariable{C$_{1}$}\ \artVariable{C$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf if}(\artVariable{E\/$^\prime$}\ \artVariable{C$_{1}$}\ \artVariable{C$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf display}]}
+\begin{split}\langle\, \artConstructor{\sf display}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{user}(\artSpecial{int32}(4)), \artVariable{$\sigma$}\,\rangle 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf add}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf add}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{add}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf addRight}]}
+\begin{split}\frac{ \artVariable{n}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{E$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{2}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf add}(\artVariable{n}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf add}(\artVariable{n}\ \artVariable{I$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf addLeft}]}
+\begin{split}\frac{\langle\, \artVariable{E$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{1}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf add}(\artVariable{E$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf add}(\artVariable{I$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf translate}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{3}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf translate}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{n$_{3}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{user}(\artSpecial{int32}(5)\ \artVariable{n$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{n$_{3}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf translateRight}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{P$_{3}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P3E}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf translate}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{P$_{3}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf translate}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{P3E}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf translateMiddle}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{P$_{3}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P3E}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf translate}(\artVariable{n$_{1}$}\ \artVariable{P$_{3}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf translate}(\artVariable{n$_{1}$}\ \artVariable{P3E}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf translateLeft}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{P$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf translate}(\artVariable{P$_{1}$}\ \artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf translate}(\artVariable{P1E}\ \artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf translateLeftRight}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{P$_{1}$}, \artVariable{P$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{P$_{2}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf translate}(\artVariable{P$_{1}$}\ \artVariable{P$_{2}$}\ \artVariable{n$_{1}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf translate}(\artVariable{P1E}\ \artVariable{P$_{2}$}\ \artVariable{n$_{1}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf div}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf div}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{div}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf divRight}]}
+\begin{split}\frac{ \artVariable{n}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{E$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{2}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf div}(\artVariable{n}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf div}(\artVariable{n}\ \artVariable{I$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf divLeft}]}
+\begin{split}\frac{\langle\, \artVariable{E$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{1}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf div}(\artVariable{E$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf div}(\artVariable{I$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf while}]}
+\begin{split}\langle\, \artConstructor{\sf while}(\artVariable{E}\ \artVariable{C}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf if}(\artVariable{E}\ \artConstructor{\sf seq}(\artVariable{C}\ \artConstructor{\sf while}(\artVariable{E}\ \artVariable{C}))\ \artSpecial{done}), \artVariable{$\sigma$}\,\rangle 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf assign}]}
+\begin{split}\frac{ \artVariable{n}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf assign}(\artVariable{X}\ \artVariable{n}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{done}, \artSpecial{put}(\artVariable{$\sigma$}\ \artVariable{X}\ \artVariable{n})\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf assignResolve}]}
+\begin{split}\frac{\langle\, \artVariable{E}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf assign}(\artVariable{X}\ \artVariable{E}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf assign}(\artVariable{X}\ \artVariable{I}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf mul}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf mul}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{mul}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf mulRight}]}
+\begin{split}\frac{ \artVariable{n}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{E$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{2}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf mul}(\artVariable{n}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf mul}(\artVariable{n}\ \artVariable{I$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf mulLeft}]}
+\begin{split}\frac{\langle\, \artVariable{E$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{1}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf mul}(\artVariable{E$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf mul}(\artVariable{I$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf changeColour}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{3}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{4}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{5}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf changeColour}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{n$_{3}$}\ \artVariable{n$_{4}$}\ \artVariable{n$_{5}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{user}(\artSpecial{int32}(6)\ \artVariable{n$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{n$_{3}$}\ \artVariable{n$_{4}$}\ \artVariable{n$_{5}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf changeColourEvaluate}]}
+\begin{split}\frac{ \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{3}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{4}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{5}$}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{P$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf changeColour}(\artVariable{P$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{n$_{3}$}\ \artVariable{n$_{4}$}\ \artVariable{n$_{5}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf changeColour}(\artVariable{P1E}\ \artVariable{n$_{2}$}\ \artVariable{n$_{3}$}\ \artVariable{n$_{4}$}\ \artVariable{n$_{5}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf sphere}]}
+\begin{split}\frac{ \artVariable{P$_{1}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf sphere}(\artVariable{P$_{1}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{user}(\artSpecial{int32}(1)\ \artVariable{P$_{1}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf sphereEvaluate}]}
+\begin{split}\frac{\langle\, \artVariable{P$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf sphere}(\artVariable{P$_{1}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf sphere}(\artVariable{P1E}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf scale}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf scale}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{user}(\artSpecial{int32}(7)\ \artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf scaleLeft}]}
+\begin{split}\frac{ \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{P$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{$\sigma$}\,\rangle }{\langle\, \artConstructor{\sf scale}(\artVariable{P$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf scale}(\artVariable{P1E}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf scaleLeftRight}]}
+\begin{split}\frac{ \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{P$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{$\sigma$}\,\rangle }{\langle\, \artConstructor{\sf scale}(\artVariable{n$_{2}$}\ \artVariable{P$_{1}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf scale}(\artVariable{n$_{2}$}\ \artVariable{P1E}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf scaleRight}]}
+\begin{split}\frac{\langle\, \artVariable{P$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{$\sigma$}\,\rangle }{\langle\, \artConstructor{\sf scale}(\artVariable{P$_{1}$}\ \artVariable{P$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf scale}(\artVariable{P1E}\ \artVariable{P$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf variable}]}
+\begin{split}\frac{ \artSpecial{get}(\artVariable{$\sigma$}\ \artVariable{R})\triangleright \artVariable{Z} }{\langle\, \artConstructor{\sf deref}(\artVariable{R}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{Z}, \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf variable}]}
+\begin{split}\frac{ \artSpecial{get}(\artVariable{$\sigma$}\ \artVariable{R})\triangleright \artVariable{Z} }{\langle\, \artConstructor{\sf deref}(\artVariable{R}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{Z}, \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf gt}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf gt}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{gt}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf gtRight}]}
+\begin{split}\frac{ \artVariable{n}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{E$_{2}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{2}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf gt}(\artVariable{n}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf gt}(\artVariable{n}\ \artVariable{I$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf gtLeft}]}
+\begin{split}\frac{\langle\, \artVariable{E$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{I$_{1}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf gt}(\artVariable{E$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf gt}(\artVariable{I$_{1}$}\ \artVariable{E$_{2}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf cube}]}
+\begin{split}\langle\, \artConstructor{\sf cube}(\artVariable{P$_{1}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{user}(\artSpecial{int32}(2)\ \artVariable{P$_{1}$}\ \artVariable{P$_{1}$}\ \artVariable{P$_{1}$}), \artVariable{$\sigma$}\,\rangle 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf cubeEvaluate}]}
+\begin{split}\frac{\langle\, \artVariable{P$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf cube}(\artVariable{P$_{1}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf cube}(\artVariable{P1E}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf duplicate}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) }{\langle\, \artConstructor{\sf duplicate}(\artVariable{n$_{1}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{user}(\artSpecial{int32}(8)\ \artVariable{n$_{1}$}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf duplicateEvaluate}]}
+\begin{split}\frac{\langle\, \artVariable{P$_{1}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{$\sigma$}\,\rangle }{\langle\, \artConstructor{\sf duplicate}(\artVariable{P$_{1}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf duplicate}(\artVariable{P1E}), \artVariable{$\sigma$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf cuboid}]}
+\begin{split}\langle\, \artConstructor{\sf cuboid}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{n$_{3}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artSpecial{user}(\artSpecial{int32}(2)\ \artVariable{n$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{n$_{3}$}), \artVariable{$\sigma$}\,\rangle 
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf cuboidLeft}]}
+\begin{split}\frac{\langle\, \artVariable{P$_{1}$}, \artVariable{P$_{2}$}, \artVariable{P$_{3}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P1E}, \artVariable{P$_{2}$}, \artConstructor{\sf P3}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf cuboid}(\artVariable{P$_{1}$}\ \artVariable{P$_{2}$}\ \artVariable{P$_{3}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf cuboid}(\artVariable{P1E}\ \artVariable{P$_{2}$}\ \artVariable{P$_{3}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf cuboidMiddle}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{P$_{2}$}, \artVariable{P$_{3}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P2E}, \artVariable{P$_{3}$}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf cuboid}(\artVariable{n$_{1}$}\ \artVariable{P$_{2}$}\ \artVariable{P$_{3}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf cuboid}(\artVariable{n$_{1}$}\ \artVariable{P2E}\ \artVariable{P$_{3}$}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\begin{equation}
+\tag*{[\artConstructor{\sf cuboidRight}]}
+\begin{split}\frac{ \artVariable{n$_{1}$}\triangleright \artSpecial{int32}(\_) \quad  \artVariable{n$_{2}$}\triangleright \artSpecial{int32}(\_) \quad \langle\, \artVariable{P$_{3}$}, \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artVariable{P3E}, \artVariable{$\sigma$\/$^\prime$}\,\rangle }{\langle\, \artConstructor{\sf cuboid}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{P$_{3}$}), \artVariable{$\sigma$}\,\rangle \rightarrow \langle\, \artConstructor{\sf cuboid}(\artVariable{n$_{1}$}\ \artVariable{n$_{2}$}\ \artVariable{P3E}), \artVariable{$\sigma$\/$^\prime$}\,\rangle }
+\end{split}
+\end{equation}
+
+\hrule
+\end{document}

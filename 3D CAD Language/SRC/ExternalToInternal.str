@@ -1,0 +1,43 @@
+LeftGlass <- cuboid(200, 100, 50);
+
+LeftGlass -> translate(300, 0);
+
+LeftGlass -> changeColour(50, 100, 100, 1);
+
+RightGlass <- cuboid(200, 100, 50);
+
+RightGlass -> translate(800, 0);
+
+RightGlass -> changeColour(50, 100, 100, 1);
+
+Bridge <- cuboid(300, 10, 50);
+
+Bridge -> translate(550, 0);
+
+Bridge -> changeColour(0, 0, 0, 1);
+
+Nose <- cylinder(40, 200);
+
+Nose -> translate(550, 100);
+
+Nose -> changeColour(92, 64, 51, 1);
+
+NariceLeft <- sphere(28);
+
+NariceLeft -> translate(523, 200);
+
+NariceLeft -> changeColour(92, 64, 51, 1);
+
+NariceRight <- sphere(28);
+
+NariceRight -> translate(576, 200);
+
+NariceRight -> changeColour(92, 64, 51, 1);
+
+Mouth <- cuboid(600, 30, 50);
+
+Mouth -> translate(550, 400);
+
+Mouth -> changeColour(200, 0, 0, 1);
+
+display;
