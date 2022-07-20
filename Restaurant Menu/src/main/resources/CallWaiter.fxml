@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+      <top>
+          <BorderPane prefHeight="75.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+              <bottom>
+                  <BorderPane BorderPane.alignment="TOP_CENTER" />
+              </bottom>
+              <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+              </padding>
+         <center>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="A server will be notified and will attend your table shortly." textAlignment="CENTER" wrappingWidth="227.3367919921875" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Constantia" size="18.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets top="30.0" />
+               </BorderPane.margin>
+            </Text>
+         </center>
+          </BorderPane>
+      </top>
+   <bottom>
+      <Button fx:id="returnButton" mnemonicParsing="false" onAction="#returnToMenu" prefHeight="36.0" prefWidth="162.0" text="Confirm" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="30.0" />
+         </BorderPane.margin>
+         <font>
+            <Font name="Constantia" size="18.0" />
+         </font>
+      </Button>
+   </bottom>
+  </BorderPane>

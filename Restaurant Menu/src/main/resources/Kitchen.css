@@ -1,0 +1,51 @@
+#prepared-button {
+  -fx-background-color: #ff0000;
+}
+
+#prepared-button:hover {
+  -fx-background-color: #bf0000;
+}
+
+#prepared-button:pressed {
+  -fx-background-color: #8a0000;
+}
+
+#order-box {
+  -fx-border-color: white; 
+  -fx-border-width: 2;
+  -fx-background-color: black;
+}
+
+#timer-label {
+  -fx-text-fill: white; 
+  -fx-font-weight: bold;
+  -fx-font: 32 consolas;
+}
+
+#order-details-label{
+  -fx-text-fill: yellow; 
+  -fx-font-weight: bold; 
+  -fx-font: 18 arial;
+}
+
+#items-label {
+  -fx-text-fill: #00ffff; 
+  -fx-font-weight: bold; 
+}
+
+#order-scroll-pane {
+  -fx-background-color: black;
+}
+
+#orders-grid {
+  -fx-background-color: black;
+}
+
+#clockLabel {
+  -fx-font: 34 consolas; 
+  -fx-background-color: black;
+}
+
+#orderhistory-button {
+
+}

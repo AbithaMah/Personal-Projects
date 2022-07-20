@@ -1,0 +1,84 @@
+.root{
+  -fx-background-color: rgb(46.0, 46.0, 46.0);
+}
+
+#itemDisplay{
+  -fx-border-color: black;
+  -fx-background-color: linear-gradient(from 0% 0% to 60% 60%, rgba(0, 99, 66, 0.418), white);
+}
+
+#menuItemAvailable{
+  -fx-font-family: Perpetua;
+  -fx-font-size: 22;
+  -fx-font-weight: Normal;
+}
+
+#menuItemNotAvaiable{
+  -fx-font-family: Perpetua;
+  -fx-font-size: 19;
+  -fx-font-weight: Normal;
+}
+
+#toolbar{
+  -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, rgb(30, 134,101), white, white, white, rgb(236, 48, 68));
+  -fx-border-color: black;
+}
+
+#waiterBackground{
+  -fx-background-color: linear-gradient(from 0% 100% to 100% 100%, rgb(0, 104,71), white, white, white, white, white, rgb(206, 18, 38));
+}
+
+.choice-box .label {
+     -fx-text-fill: white; 
+}
+.choice-box .context-menu {
+  -fx-background-color: rgb(46.0, 46.0, 46.0);
+}
+
+#goToBasket, #confirmOrder, .choice-box{
+   -fx-background-color: linear-gradient(rgb(78.0, 134.0, 168.0), rgb(98.0, 134.0, 168.0), rgb(128.0, 134.0, 168.0));
+   -fx-border-color: black;
+   -fx-border-width: 1.0 1.0 1.0 1.0;
+   -fx-background-insets: 0.0;   
+ }
+ 
+
+#goToBasket:hover, #confirmOrder:hover, .choice-box:hover{
+  -fx-background-color: linear-gradient(rgb(58.0, 114.0, 148.0), rgb(78.0, 114.0, 148.0), rgb(108.0, 114.0, 148.0));
+  -fx-background-insets: 0.0;   
+  -fx-border-color: black;
+  -fx-border-width: 1.0 1.0 1.0 1.0;
+}
+
+#goToBasket:pressed, #confirmOrder:pressed, .choice-box:pressed{
+  -fx-background-color: linear-gradient(rgb(98.0, 154.0, 188.0), rgb(118.0, 154.0, 188.0), rgb(148.0, 154.0, 188.0));
+  -fx-background-insets: 0.0;
+  -fx-border-color: black;
+  -fx-border-width: 1.0 1.0 1.0 1.0;
+}
+
+.button{
+  -fx-background-color: linear-gradient(rgb(178.0, 191.0, 192.0), grey, rgb(65.0, 65.0, 65.0));
+  -fx-text-fill: white;
+  -fx-background-radius: 6.0;
+  -fx-background-insets: 0.0;
+}
+.button:hover {
+  -fx-background-color: linear-gradient(rgb(119.0, 119.0, 119.0), rgb(83.0, 83.0, 83.0), rgb(36.0, 36.0, 36.0));
+  -fx-background-insets: 0.0;
+}
+
+.button:pressed {
+  -fx-background-color: linear-gradient(rgb(184.0, 184.0, 184.0), rgb(131.0, 131.0, 131.0), rgb(110.0, 110.0, 110.0));
+  -fx-background-insets: 0.0;
+}
+
+#active-order-pane {
+  -fx-border-color: #e6e6e6;
+  -fx-border-width: 1;
+  -fx-background-color: #fff3d1;
+}
+
+#order-cancel-button {
+  -fx-background-color: #ab0000;
+}

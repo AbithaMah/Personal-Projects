@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uk.ac.rhul.cs2810.WaiterController">
+   <top>
+      <AnchorPane prefHeight="93.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+                  <Text layoutX="95.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="OAXACO">
+                      <font>
+                          <Font name="Elephant" size="43.0" />
+                      </font>
+                  </Text>
+                    <Text layoutX="130.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mexican Restaurant">
+                        <font>
+                            <Font name="System Bold Italic" size="15.0" />
+                        </font>
+                    </Text>
+            <Button layoutX="332.0" layoutY="54.0" mnemonicParsing="false" text="Logout" />
+            <Label layoutX="332.0" layoutY="28.0" text="Username" />
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+          <AnchorPane prefHeight="733.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+              <children>
+              <Label fx:id="invalidLoginLabel" layoutX="101.0" layoutY="64.0" prefHeight="17.0" prefWidth="39.0" text="Items : " textAlignment="RIGHT" />
+            <Label layoutX="101.0" layoutY="30.0" prefHeight="37.0" prefWidth="87.0" text="Order ID :" />
+            <Button layoutX="100.0" layoutY="324.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="201.0" text="Confirm order" />
+            <TextArea layoutX="101.0" layoutY="87.0" prefHeight="180.0" prefWidth="207.0" />
+            <Label layoutX="100.0" layoutY="287.0" prefHeight="37.0" prefWidth="87.0" text="Order status :" />
+            <Label fx:id="orderStatusLabel" layoutX="179.0" layoutY="297.0" prefHeight="17.0" prefWidth="122.0" text="Unconfirmed" />
+            <Label layoutX="165.0" layoutY="40.0" prefHeight="17.0" prefWidth="90.0" text="0001" />
+            <Label fx:id="invalidLoginLabel1" layoutX="101.0" layoutY="377.0" prefHeight="18.0" prefWidth="68.0" text="Item Stock:" textAlignment="RIGHT" />
+            <Accordion fx:id="stockAccordion" layoutX="87.0" layoutY="437.0">
+              <panes>
+                <TitledPane animated="false" prefHeight="104.0" prefWidth="202.0" text="untitled 1">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="untitled 2">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+                <TitledPane animated="false" text="untitled 3">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  </content>
+                </TitledPane>
+              </panes>
+            </Accordion>
+              </children>
+              <BorderPane.margin>
+                  <Insets bottom="10.0" />
+              </BorderPane.margin>
+          </AnchorPane>
+   </center>
+  </BorderPane>
